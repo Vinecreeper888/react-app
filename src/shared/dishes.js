@@ -43,7 +43,8 @@ export const DISHES = [
             author: "25 Cent",
             date: "2011-12-02T17:57:28.556094Z"
             }
-        ]                        },
+            ]
+        },
         {
         id: 1,
         name:'Zucchipakoda',
@@ -131,7 +132,7 @@ export const DISHES = [
             id: 4,
             rating: 2,
             comment: "It's your birthday, we're gonna party!",
-            author: "25 Cent",
+            author: "33 Cent",
             date: "2011-12-02T17:57:28.556094Z"
             }
         ]
@@ -183,3 +184,11 @@ export const DISHES = [
         ]
         }
     ];
+
+
+
+
+// <ul className="list-unstyled">
+//                         <li>---  {c.comments.map((item) => item.author)}</li>
+//                         <li>{c.comments.map((item) => item.date)}</li>
+//                     </ul>
