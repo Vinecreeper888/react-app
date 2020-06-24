@@ -2,32 +2,7 @@ import React from 'react';
 import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reactstrap';
 
 
-class Dishdetail extends React.Component {
-
-	// constructor(props) {
-	// 	super(props);
-
-	// 	this.state = {
-	// 		selectedDish: null,
-	// 	}
-	// }
-
-
-	// onDishSelect(dish) {
-	// 	this.setState({
-	// 		selectedDish: dish
-	// 	})
-	// }
-
-	componentDidMount() {
-		console.log("Dishdetail component componentDidMount invoked");
-	}
-
-	componentDidUpdate() {
-		console.log("Dishdetail Component componentDidUpdate invoked");
-	}
-
-	renderDish(dish){
+	function RenderDish({dish}){
 		// if(dish != null) {
 		// 	return(
 		// 		<Card>
@@ -60,7 +35,7 @@ class Dishdetail extends React.Component {
 	}	
 
 
-	renderComments(c) {
+	function RenderComments({comments}) {
 	// 	if(c!=null) {
 	// 		return(
 	// 			<div className="col-12 col-md-5 m-1">
@@ -85,16 +60,16 @@ class Dishdetail extends React.Component {
 	// 	}
 	// }
 
-	if(c!=null) 
+	if(comments != null) 
 		return(
 			<div className="col-12 col-md-5 m-1">
 				<h4>COMMENTS</h4>
 				<ul className="list-unstyled">
-					{c.map((comment) => {
+					{comments.map((comment) => {
 						return(
 							<li key={comment.id}>
 								<p>{comment.comment}</p>
-								<p>{comment.author}, {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
+								<p>----{comment.author}, {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
 							</li>
 						);
 					})}
@@ -107,7 +82,7 @@ class Dishdetail extends React.Component {
 		);
 }
 
-	render() {
+	const DishDetail = (props) => {
 
 		// const detail = this.props.dishes1.map((item) => {
 
@@ -135,12 +110,12 @@ class Dishdetail extends React.Component {
 
 		console.log('Dishdetail component componentDidMount invoked');
 
-	if(this.props.dishes1 != null)
+	if(props.dishes1 != null)
 		return(
 			<div className="container">
 				<div className="row">
-					{this.renderDish(this.props.dishes1)}
-					{this.renderComments(this.props.dishes1.comments)}
+					<RenderDish dish={props.dishes1}/>
+					<RenderComments comments={props.dishes1.comments}/>
 				</div>
 			</div>
 		);
@@ -148,10 +123,9 @@ class Dishdetail extends React.Component {
 		return (
 			<div></div>
 			);
-
-	}
 }
-export default Dishdetail;
+
+export default DishDetail;
 
 
 
