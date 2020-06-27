@@ -1,15 +1,18 @@
 import React from 'react';
 import Main from './components/MainComponent';
 import './App.css';
+import {BrowserRouter} from 'react-router-dom';
 //import Dishdetail from './components/DishdetailComponent';
 
 class App extends React.Component {
 
   render() {
     return (
+    	<BrowserRouter>
       <div>
         <Main/>
       </div>
+      </BrowserRouter>
     );
   }
   
