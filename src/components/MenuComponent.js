@@ -33,6 +33,7 @@ import {Card, CardImg, CardImgOverlay, CardTitle} from 'reactstrap';
 			</div>
 		);
 	}
+	
 
 	
 
@@ -40,4 +41,3 @@ import {Card, CardImg, CardImgOverlay, CardTitle} from 'reactstrap';
 
 export default Menu;
 
-// <Card onClick={() => this.props.onClick(dish.id)}>
