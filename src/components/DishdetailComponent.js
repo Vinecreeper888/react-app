@@ -139,7 +139,7 @@ export default DishDetail;
 
 
 
-// {/{this.renderDish(this.state.selectedDish)}
+// {{this.renderDish(this.state.selectedDish)}
 // {this.renderComments(this.state.selectedDish)}/}
 
 //add this in the final return
