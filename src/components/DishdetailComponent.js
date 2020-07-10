@@ -19,6 +19,7 @@ const minLength = (len) => (val) => (val) && (val.length >= len);
 			}
 
 			this.toggleModal = this.toggleModal.bind(this);
+			this.handleComment = this.handleComment.bind(this);
 		}
 
 		toggleModal() {
@@ -28,9 +29,11 @@ const minLength = (len) => (val) => (val) && (val.length >= len);
 		}
 
 		handleComment(event) {
-			console.log("Current state is"+JSON.stringify(event));
-	    	alert("Current state is"+JSON.stringify(event));
+			// console.log("Current state is"+JSON.stringify(event));
+	  //   	alert("Current state is"+JSON.stringify(event));
 	    	//event.preventDefault();	
+	    	this.toggleModal();
+	    	this.props.addComment(this.props.dishId, event.rating, event.author, event.comment);
 		}
 
 		render() {
@@ -139,7 +142,7 @@ const minLength = (len) => (val) => (val) && (val.length >= len);
 	}	
 
 
-	function RenderComments({comments}) {
+	function RenderComments({comments, addComment, dishId}) {
 	// 	if(c!=null) {
 	// 		return(
 	// 			<div className="col-12 col-md-5 m-1">
@@ -179,7 +182,7 @@ const minLength = (len) => (val) => (val) && (val.length >= len);
 						);
 					})}
 				</ul>
-				<CommentForm />
+				<CommentForm dishId={dishId} addComment={addComment}/>
 			</div>
 		);
 	else 
@@ -230,7 +233,9 @@ const minLength = (len) => (val) => (val) && (val.length >= len);
 				</div>
 				<div className="row">
 					<RenderDish dish={props.dishes1}/>
-					<RenderComments comments={props.comments}/>
+					<RenderComments comments={props.comments}
+						addComment={props.addComment}
+						dishId={props.dishes1.id} />
 					
 				</div>
 			</div>
