@@ -19,8 +19,7 @@ export const Comments = (state= {
 			var comment = action.payload;
 			//generating comments length
 			//comments is a JS array
-			comment.id =  state.comments.length;
-			comment.date = new Date().toISOString();
+			
 			//pushes into the array, the pushed-in element 
 			//is a new objext
 			return {...state, comments: state.comments.concat(comment)};
