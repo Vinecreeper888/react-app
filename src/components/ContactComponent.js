@@ -1,7 +1,9 @@
 import React from 'react';
 import {Breadcrumb, BreadcrumbItem, Button, Label, Col, Row} from 'reactstrap';
 import {Link} from 'react-router-dom';
-import {Control, Form, Errors, actions} from 'react-redux-form'
+import {Control, Form, Errors } from 'react-redux-form'
+//import {postFeedback} from '../redux/ActionCreators';
+
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -29,10 +31,12 @@ class Contact extends React.Component {
     //     })
     // }
 
-    handleSubmit(values) {
-        console.log("Current state is"+JSON.stringify(values));
-        alert("Current state is"+JSON.stringify(values));
+    handleSubmit(event) {
+        // console.log("Current state is"+JSON.stringify(values));
+        alert("Current state is"+JSON.stringify(event));
         this.props.resetFeedbackForm();
+        this.props.postFeedback(this.props.dishId, event.firstname, event.lastname, event.telnum, event.email, event.agree,event.contactType, event.message);
+        
         //event.preventDefault();
     } 
 
@@ -107,7 +111,7 @@ class Contact extends React.Component {
                 <div className="col-12 col-sm-11 offset-sm-1">
                     <div className="btn-group" role="group">
                         <a role="button" className="btn btn-primary" href="tel:+85212345678"><i className="fa fa-phone"></i> Call</a>
-                        <a role="button" className="btn btn-info"><i className="fa fa-skype"></i> Skype</a>
+                        <a role="button" className="btn btn-info" href=""><i className="fa fa-skype"></i> Skype</a>
                         <a role="button" className="btn btn-success" href="mailto:confusion@food.net"><i className="fa fa-envelope-o"></i> Email</a>
                     </div>
                 </div>
@@ -118,7 +122,7 @@ class Contact extends React.Component {
                     <h3>Send us your feedback</h3>
                 </div>
                 <div className="col-12 col-md-9">
-                    <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
+                    <Form model="feedback" onSubmit={this.handleSubmit}>
                         <Row className="form-group">
                             <Label htmlFor="firstname" md={2}>First Name</Label>
                             <Col md={10}>
@@ -254,3 +258,4 @@ export default Contact;
 
 
 
+// LINE 124 <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
